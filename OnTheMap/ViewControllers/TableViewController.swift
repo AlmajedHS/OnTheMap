@@ -13,23 +13,28 @@ class TableViewController: TabBarViewController,UITableViewDelegate, UITableView
    
     var locationsDataTmp: LocationsData?
     
-  
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("reach 1")
        
         getController.getStudentLocations() {(studentsLocations) in
             DispatchQueue.main.async {
                 self.locationsDataTmp = studentsLocations
+                self.tableView.reloadData()
             }
         }
         
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        print("reach 2")
-        print((self.locationsDataTmp?.studentLocations.count)!)
-        return (self.locationsDataTmp?.studentLocations.count)!
+       
+        if let locationsDataTmpNotNil = locationsDataTmp {
+            return locationsDataTmpNotNil.studentLocations.count
+        } else {
+            return 0
+        }
+       
     }
     
     

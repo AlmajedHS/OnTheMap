@@ -133,7 +133,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="xuV-DC-v67">
             <objects>
-                <tabBarController id="d1D-KU-wSx" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarViewController" id="d1D-KU-wSx" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DMi-AK-XEh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -215,6 +215,9 @@
                         <viewLayoutGuide key="safeArea" id="lhp-2S-NDp"/>
                     </view>
                     <navigationItem key="navigationItem" id="gom-bT-fCb"/>
+                    <connections>
+                        <outlet property="tableView" destination="Yqy-oV-FVO" id="DOj-sM-3hM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lZ0-CO-CZf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

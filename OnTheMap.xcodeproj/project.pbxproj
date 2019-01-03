@@ -25,6 +25,7 @@
 		2317A27521DA6A6500E88AE1 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2317A27421DA6A6500E88AE1 /* TabBarViewController.swift */; };
 		2317A27721DA6C5600E88AE1 /* FinishLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2317A27621DA6C5600E88AE1 /* FinishLocationViewController.swift */; };
 		2317A27921DB8EBE00E88AE1 /* StudentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2317A27821DB8EBE00E88AE1 /* StudentTableViewCell.swift */; };
+		23471F9921DE01B70073B068 /* deleteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23471F9821DE01B70073B068 /* deleteController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		2317A27421DA6A6500E88AE1 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		2317A27621DA6C5600E88AE1 /* FinishLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishLocationViewController.swift; sourceTree = "<group>"; };
 		2317A27821DB8EBE00E88AE1 /* StudentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentTableViewCell.swift; sourceTree = "<group>"; };
+		23471F9821DE01B70073B068 /* deleteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deleteController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				2317A25F21DA32BE00E88AE1 /* postController.swift */,
 				2317A26821DA33BD00E88AE1 /* APIConstants.swift */,
 				2317A26C21DA416B00E88AE1 /* getController.swift */,
+				23471F9821DE01B70073B068 /* deleteController.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 				2317A26321DA330600E88AE1 /* UserInfo.swift in Sources */,
 				2317A25D21DA315B00E88AE1 /* LoginViewController.swift in Sources */,
 				2317A27121DA6A0B00E88AE1 /* TableViewController.swift in Sources */,
+				23471F9921DE01B70073B068 /* deleteController.swift in Sources */,
 				2317A27321DA6A1900E88AE1 /* AddLocationViewController.swift in Sources */,
 				2317A26021DA32BE00E88AE1 /* postController.swift in Sources */,
 				2317A26521DA332400E88AE1 /* locationsData.swift in Sources */,

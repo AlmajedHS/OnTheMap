@@ -10,8 +10,8 @@ import Foundation
 
 class postController {
     
-    private static var userInfo = UserInfo()
-    private static var sessionId: String?
+    public static var userInfo = UserInfo()
+    public static var sessionId: String?
     
     static func postSession(username: String, password: String, completion: @escaping (String?)->Void) {
         guard let url = URL(string: APIConstants.SESSION) else {
@@ -38,6 +38,11 @@ class postController {
                         
                         self.sessionId = sessionDictionary["id"] as? String
                         self.userInfo.key = accountDicttionary["key"] as? String
+                        
+                        print("seesion id is \(self.sessionId!))")
+                        print("user key  is \(self.userInfo.key!))")
+                        let vc = TabBarViewController(nibName:"TabBarViewController",bundle:nil)
+                        vc.location?.uniqueKey = self.userInfo.key
                         self.getUserInfo(completion: { err in
                             
                         })
@@ -53,13 +58,16 @@ class postController {
             }
             DispatchQueue.main.async {
                 completion(errorString)
+                
             }
             
         }
         task.resume()
     }
+   
     static func getUserInfo(completion: @escaping (Error?)->Void) {
-        let request = URLRequest(url: URL(string: "https://onthemap-api.udacity.com/v1/users/\(self.sessionId)")!)
+         print("seesion id info is \(self.sessionId!))")
+        let request = URLRequest(url: URL(string: "https://onthemap-api.udacity.com/v1/users/\(self.userInfo.key!)")!)
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
             if error != nil { // Handle error...
@@ -67,14 +75,13 @@ class postController {
             }
             let range = Range(5..<data!.count)
             let newData = data?.subdata(in: range) /* subset response data! */
-            print("???")
             print(String(data: newData!, encoding: .utf8)!)
         }
         task.resume()
         
     }
     static func postLocation(_ location: StudentLocation, completion: @escaping (String?)->Void) {
-        guard let url = URL(string: APIConstants.SESSION) else {
+        guard let url = URL(string: APIConstants.STUDENT_LOCATION) else {
             completion("url is invalid")
             return
         }
@@ -84,10 +91,9 @@ class postController {
         request.addValue(APIConstants.PARSE_APP_ID_V, forHTTPHeaderField: APIConstants.PARSE_APP_ID_K)
         request.addValue(APIConstants.PARSE_API_KEY_V, forHTTPHeaderField: APIConstants.PARSE_API_KEY_K)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-       print("hi")
-        print(location)
-        
-        request.httpBody = "{\"uniqueKey\": \"\(location.uniqueKey)\", \"firstName\": \"\(location.firstName)\", \"lastName\": \"\(location.lastName)\",\"mapString\": \"\(location.mapString)\", \"mediaURL\": \"\(location.mediaURL)\",\"latitude\": \(location.latitude), \"longitude\": \(location.longitude)}".data(using: .utf8)
+      
+       
+        request.httpBody = "{\"uniqueKey\": \"\(userInfo.key!)\", \"firstName\": \"\(location.firstName)\", \"lastName\": \"\(location.lastName)\",\"mapString\": \"\(location.mapString!)\", \"mediaURL\": \"\(location.mediaURL!)\",\"latitude\": \(location.latitude!), \"longitude\": \(location.longitude!)}".data(using: .utf8)
         
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
@@ -97,6 +103,7 @@ class postController {
                     
                    print("success!")
                 } else {
+                     
                     errorString = "error in your login information"
                 }
             } else {

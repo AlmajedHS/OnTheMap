@@ -11,6 +11,7 @@ import UIKit
 class TabBarViewController: UIViewController {
 
     var locationsData: LocationsData?
+    var location: StudentLocation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,14 +24,24 @@ class TabBarViewController: UIViewController {
         navigationItem.rightBarButtonItems = [addLocationButton, refreshButton]
         navigationItem.leftBarButtonItem = logoutButton
         // Do any additional setup after loading the view.
+        
     }
    
     @objc private func logout(_ sender: Any) {
         //need implementation
-        
+        deleteController.deleteSession {  err  in
+            guard err == nil else {
+                self.showAlert(viewController:self,title: "error !!", message: err!,actionTitle: "ERROR")
+                return
+            }
+            
+            self.dismiss(animated: true, completion: nil)
+           
+        }
     }
     
     @objc private func refreshLocations(_ sender: Any) {
+        print("refresh pressed")
         loadLocations()
     }
     
