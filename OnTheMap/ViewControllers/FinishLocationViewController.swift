@@ -13,6 +13,7 @@ class FinishLocationViewController: UIViewController,MKMapViewDelegate {
 
     var location: StudentLocation?
     
+   
     @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()

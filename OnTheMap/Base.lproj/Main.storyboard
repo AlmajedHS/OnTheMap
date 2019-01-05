@@ -368,11 +368,18 @@
                                 </constraints>
                                 <variation key="heightClass=compact" spacing="22"/>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="mSN-do-Q9w">
+                                <rect key="frame" x="177" y="426" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="mSN-do-Q9w" firstAttribute="leading" secondItem="GIm-1z-fcl" secondAttribute="leading" constant="177" id="2OW-Oi-zFg"/>
                             <constraint firstItem="CWB-yZ-J2p" firstAttribute="top" relation="greaterThanOrEqual" secondItem="mrF-Ip-RA1" secondAttribute="bottom" constant="8" id="7qk-Cs-6eq"/>
+                            <constraint firstItem="mSN-do-Q9w" firstAttribute="top" secondItem="mrF-Ip-RA1" secondAttribute="bottom" constant="46" id="BZU-aE-o3q"/>
                             <constraint firstItem="mrF-Ip-RA1" firstAttribute="leading" secondItem="wOb-ZE-5FQ" secondAttribute="leading" constant="32" id="DbW-dt-qDg"/>
+                            <constraint firstItem="GIm-1z-fcl" firstAttribute="trailing" secondItem="mSN-do-Q9w" secondAttribute="trailing" constant="178" id="IkH-Yt-qyz"/>
+                            <constraint firstItem="CWB-yZ-J2p" firstAttribute="top" secondItem="mSN-do-Q9w" secondAttribute="bottom" constant="221" id="LJ3-2F-gmf"/>
                             <constraint firstAttribute="trailing" secondItem="mrF-Ip-RA1" secondAttribute="trailing" constant="32" id="dhi-Nv-hGP"/>
                             <constraint firstItem="mrF-Ip-RA1" firstAttribute="top" secondItem="oPT-ll-xOL" secondAttribute="bottom" constant="62" id="dqR-4l-oZ7">
                                 <variation key="heightClass=compact" constant="32"/>
@@ -384,6 +391,7 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="TlA-RK-KVh"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="mSN-do-Q9w" id="pKA-Ry-6NJ"/>
                         <outlet property="locationTextField" destination="sVo-Tv-fuA" id="Cfa-tS-1cf"/>
                         <outlet property="mediaLinkTextField" destination="c7s-Zs-0If" id="dng-ay-pIi"/>
                         <segue destination="z55-UB-jZk" kind="show" identifier="mapSegue" id="CET-yf-Xdw"/>

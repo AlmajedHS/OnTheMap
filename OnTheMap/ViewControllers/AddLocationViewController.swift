@@ -11,6 +11,7 @@ import CoreLocation
 
 class AddLocationViewController: UIViewController {
 
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var mediaLinkTextField: UITextField!
     override func viewDidLoad() {
@@ -42,10 +43,18 @@ class AddLocationViewController: UIViewController {
     
     private func geocodeCoordinates(_ studentLocation: StudentLocation) {
         
-        
+        activityIndicator.startAnimating()
         CLGeocoder().geocodeAddressString(studentLocation.mapString!) { (placeMarks, err) in
-           
-            guard let firstLocation = placeMarks?.first?.location else { return }
+            self.performUIUpdatesOnMain {
+                self.activityIndicator.stopAnimating()
+            }
+            guard let firstLocation = placeMarks?.first?.location else {
+                
+                 self.showAlert(viewController:self,title: "Error", message: "There is no first location",actionTitle: "ERROR")
+                return
+                
+                
+            }
            
             var location = studentLocation
             location.latitude = firstLocation.coordinate.latitude
@@ -62,5 +71,9 @@ class AddLocationViewController: UIViewController {
         }
     }
 
-
+    func performUIUpdatesOnMain(_ updates: @escaping () -> Void) {
+        DispatchQueue.main.async {
+            updates()
+        }
+    }
 }

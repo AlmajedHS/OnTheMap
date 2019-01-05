@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class TableViewController: TabBarViewController,UITableViewDelegate, UITableViewDataSource {
 
@@ -42,9 +43,20 @@ class TableViewController: TabBarViewController,UITableViewDelegate, UITableView
         //obtain a cell of type Table Cell
         let cell = tableView.dequeueReusableCell(withIdentifier: "studentCell") as! StudentTableViewCell
         let student = locationsDataTmp?.studentLocations[indexPath.row]
-        cell.nameLabel.text = (student?.firstName)! + " " + (student?.lastName)!
+        cell.nameLabel.text = (student?.firstName ?? "") + " " + (student?.lastName ?? "")
         
         return cell
+    }
+     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       
+    
+    let urlMedia = locationsDataTmp?.studentLocations[indexPath.row].mediaURL
+        
+        let app = UIApplication.shared
+        if let url = URL(string: urlMedia!), app.canOpenURL(url) {
+            app.open(url, options: [:], completionHandler: nil)
+        }
+        
     }
     
 
